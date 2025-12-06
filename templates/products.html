@@ -1,0 +1,38 @@
+@"
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Товары</title></head>
+<body style="font-family: Arial; padding: 20px;">
+<h1>Товары</h1>
+<a href="/logout" style="float: right;">Выход</a>
+<a href="/stores">Магазины</a> | 
+<a href="/about">О нас</a> | 
+<a href="/contacts">Контакты</a>
+<hr>
+
+<p>Всего товаров: {{.total_count}}</p>
+<p>Средняя цена: {{.average_price}} ₽</p>
+
+<table border="1" cellpadding="10" style="border-collapse: collapse;">
+<tr><th>ID</th><th>Название</th><th>Цена</th><th>Описание</th><th>Действия</th></tr>
+{{range .products}}
+<tr>
+<td>{{.ID}}</td>
+<td>{{.Name}}</td>
+<td>{{printf "%.2f" .Price}} ₽</td>
+<td>{{.Description}}</td>
+<td>
+<a href="/products/{{.ID}}/edit">✏️ Редактировать</a> | 
+<a href="/products/{{.ID}}/delete" onclick="return confirm('Удалить товар?')">🗑️ Удалить</a>
+</td>
+</tr>
+{{else}}
+<tr><td colspan="5" style="text-align: center;">Нет товаров</td></tr>
+{{end}}
+</table>
+
+<br>
+<a href="/products/create">➕ Добавить товар</a>
+</body>
+</html>
+"@ | Out-File -FilePath templates\products.html -Encoding UTF8

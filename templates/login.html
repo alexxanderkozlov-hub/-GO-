@@ -1,0 +1,16 @@
+@"
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Вход</title></head>
+<body style="font-family: Arial; padding: 20px;">
+<h1>Вход в систему</h1>
+{{if .error}}<p style="color: red;">{{.error}}</p>{{end}}
+<form method="POST" action="/login">
+<input type="text" name="username" placeholder="Логин" required><br><br>
+<input type="password" name="password" placeholder="Пароль" required><br><br>
+<button type="submit">Войти</button>
+</form>
+<p><strong>Демо доступ:</strong> admin / admin123</p>
+</body>
+</html>
+"@ | Out-File -FilePath templates\login.html -Encoding UTF8

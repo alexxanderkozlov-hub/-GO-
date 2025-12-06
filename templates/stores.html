@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазины</title>
+</head>
+<body>
+    <h1>Список магазинов (всего: {{.total_count}})</h1>
+    
+    {{if .stores}}
+        <ul>
+        {{range .stores}}
+            <li>{{.Name}} - {{.Address}} (ID: {{.ID}})</li>
+        {{end}}
+        </ul>
+    {{else}}
+        <p>Нет доступных магазинов</p>
+    {{end}}
+    
+    <div>
+        <a href="/stores/create">Добавить магазин</a> |
+        <a href="/products">Товары</a> |
+        <a href="/logout">Выйти</a>
+    </div>
+</body>
+</html>
